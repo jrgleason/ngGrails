@@ -23,7 +23,8 @@ module.exports = function(grunt) {
 				tasks : [ 'html2js' ]
 			},
 			concat : {
-				files : [ 'src/angular/siteApp.js', 'src/angular/**/*.js' ],
+				files : ['src/main/angular/**/app.js',
+							'src/main/angular/**/*.js'],
 				tasks : [ 'concat' ]
 			}
 		}

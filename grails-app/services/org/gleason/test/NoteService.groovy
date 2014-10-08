@@ -6,11 +6,8 @@ import groovyx.gpars.agent.Agent;
 
 @Transactional
 class NoteService {
-//	private static users = [:]
-	//FIXME so isn't this just a list?
 	private static key = 0;
-//	final Agent notes = new Notes()
-	private final noteState = new Agent<Map<String, String>>([:])
+	private final noteState = new Agent<Map<String, Object>>([:])
 	def get(id) {
 		log.debug("We are inside the get "+id)
 		def noteList = noteState.val

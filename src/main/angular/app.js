@@ -1,1 +1,1 @@
-var app = angular.module('jg.ngGrails',[]);
+var app = angular.module('jg.ngGrails', [ 'templates-main' ]);

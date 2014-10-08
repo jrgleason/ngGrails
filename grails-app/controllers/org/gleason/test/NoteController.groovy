@@ -1,4 +1,5 @@
 package org.gleason.test
+import grails.converters.JSON
 
 class NoteController {
 	def noteService
@@ -8,11 +9,11 @@ class NoteController {
     }
     def update() {
       log.debug("POST method "+ params.id)
-	  render noteService.update(params.id, request.reader.text)
+	  render noteService.update(params.id, JSON.parse(request.reader.text))
     }
     def create(){
       log.debug("post method ")
-	  render noteService.create(request.reader.text)
+	  render noteService.create(JSON.parse(request.reader.text))
     }
     def delete(){
       log.debug("Delete method "+ params.id)
