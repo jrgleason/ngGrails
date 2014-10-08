@@ -1,0 +1,1 @@
+This is a project exploring some of the best practices for using Grails and Angular together. It explores the balance between GSP side and Angular side rendering and how both can be used in harmony.
