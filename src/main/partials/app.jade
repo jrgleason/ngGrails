@@ -1,0 +1,8 @@
+div(ng-controller="mainController")
+  nav.navbar.navbar-static-top(role="search")
+    .container-fluid
+      .navbar-header
+        a.navbar-brand(ng-click="mainCtrl.go('')") 
+          span.glyphicon.glyphicon-home
+  div.page(data-ng-view, ng-class="pageClass")
+  

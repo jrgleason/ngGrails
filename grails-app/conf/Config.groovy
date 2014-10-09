@@ -118,3 +118,7 @@ log4j.main = {
 	       'grails.app.services.org.gleason.test.NoteService',
 		   'org.gleason.test.Notes'
 }
+
+grails.assets.less.compile = 'less4j'
+grails.assets.plugin."twitter-bootstrap".excludes = ["**/*.less"]
+grails.assets.plugin."twitter-bootstrap".includes = ["bootstrap.less"]

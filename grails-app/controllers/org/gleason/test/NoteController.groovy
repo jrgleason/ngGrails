@@ -3,6 +3,9 @@ import grails.converters.JSON
 
 class NoteController {
 	def noteService
+	def index(){
+		render(view:"app")
+	}
     def get() { 
       log.debug("GET method "+ params.id)
 	  render noteService.get(params.id)

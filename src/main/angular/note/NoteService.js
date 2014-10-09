@@ -9,6 +9,9 @@ function NoteService($http){
 NoteService.prototype.get = function(successCallback, failCallback) {
   console.log("NoteService get");
   this.http_.get('/grails-angular/Note').success(successCallback).error(failCallback);
-};
+}
+NoteService.prototype.add = function(success){
+	
+}
 angular.module('jg.ngGrails')
        .service('noteService', NoteService);
