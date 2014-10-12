@@ -20,7 +20,8 @@ class NoteService {
 	}
 	def create(obj){
 		log.debug "Creating"
-		notes.put((key++).toString(), obj)
+		obj.key = key++
+		notes.put(obj.key.toString(), obj)
 		"Created"
 	}
 	def update(id, obj){

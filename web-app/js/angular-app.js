@@ -7,10 +7,11 @@ var app = angular.module('jg.ngGrails', [
 app.config(function ($routeProvider) {
     $routeProvider.when('/', {
         templateUrl: 'main/partials/view.jade',
-        controller: 'questionController'
+        controller: ViewController
     })
     .when('/add', {
-        templateUrl: 'main/partials/add.jade'
+        templateUrl: 'main/partials/add.jade',
+        controller: AddController
     })
     .otherwise({
         redirectTo: '/'
@@ -50,6 +51,14 @@ var ListDirective = function($templateCache) {
 };
 angular.module('jg.ngGrails')
        .directive('jgNoteList', ListDirective);
+var AddController = function($scope){
+	$scope.addCtrl = this;
+	$scope.pageClass = "page-add";
+}
+var ViewController = function($scope){
+	$scope.viewCtrl = this;
+	$scope.pageClass = "page-view";
+}
 var AddQuestion = function(){
 	return{
 		restrict: "E",
@@ -82,7 +91,6 @@ angular.module('jg.ngGrails')
        .service('noteService', NoteService);
 var QuestionController = function($scope, $resource, noteService){
 	$scope.questionCtrl = this;
-	$scope.pageClass = "page-view"
 	var _this = this;
 	var Question = $resource('/grails-angular/Note/:key');
 	this.questions = Question.query();

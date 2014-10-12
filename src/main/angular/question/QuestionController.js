@@ -1,6 +1,5 @@
 var QuestionController = function($scope, $resource, noteService){
 	$scope.questionCtrl = this;
-	$scope.pageClass = "page-view"
 	var _this = this;
 	var Question = $resource('/grails-angular/Note/:key');
 	this.questions = Question.query();

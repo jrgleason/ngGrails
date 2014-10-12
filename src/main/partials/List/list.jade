@@ -1,2 +1,9 @@
 ul
-  li(ng-repeat="(key, question) in questionCtrl.questions") {{question.text}}
+  li(ng-repeat="(key, question) in questionCtrl.questions") 
+    h3 {{question.text}}
+    p {{question.desc}} 
+    a 
+      i.fa.fa-caret-down(ng-click="questionCtrl.voteDown({{key}})")
+    a 
+      i.fa.fa-caret-up(ng-click="questionCtrl.voteUp({{key}})")
+    input(type="hidden", value="{{question.key}}") 

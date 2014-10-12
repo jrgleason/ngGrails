@@ -22,7 +22,11 @@ angular.module("main/partials/app.jade", []).run(["$templateCache", function($te
 angular.module("main/partials/list/list.jade", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("main/partials/list/list.jade",
     "<ul>\n" +
-    "  <li ng-repeat=\"(key, question) in questionCtrl.questions\">{{question.text}}</li>\n" +
+    "  <li ng-repeat=\"(key, question) in questionCtrl.questions\"> \n" +
+    "    <h3>{{question.text}}</h3>\n" +
+    "    <p>{{question.desc}} </p><a> <i ng-click=\"questionCtrl.voteDown({{key}})\" class=\"fa fa-caret-down\"></i></a><a> <i ng-click=\"questionCtrl.voteUp({{key}})\" class=\"fa fa-caret-up\"></i></a>\n" +
+    "    <input type=\"hidden\" value=\"{{question.key}}\"/>\n" +
+    "  </li>\n" +
     "</ul>");
 }]);
 
@@ -33,16 +37,18 @@ angular.module("main/partials/question/addQuestion.jade", []).run(["$templateCac
     "    <h3 class=\"col-xs-offset-1\">Add A Question</h3>\n" +
     "  </div>\n" +
     "  <div class=\"row\">\n" +
-    "    <div class=\"col-sm-4 col-sm-offset-2\">\n" +
+    "    <div class=\"col-sm-6\">\n" +
     "      <label for=\"questionText\" class=\"col-xs-5\">Question Text</label>\n" +
     "      <input name=\"questionText\" type=\"text\" ng-model=\"questionCtrl.newQuestion.text\" class=\"col-xs-7\"/>\n" +
     "    </div>\n" +
-    "    <div class=\"col-sm-4 col-sm-offset-2\">\n" +
+    "    <div class=\"col-sm-6\">\n" +
     "      <label for=\"questionDesc\" class=\"col-xs-5\">Question Description</label>\n" +
     "      <input name=\"questionDesc\" type=\"text\" ng-model=\"questionCtrl.newQuestion.desc\" class=\"col-xs-7\"/>\n" +
     "    </div>\n" +
-    "    <div class=\"col-sm-4\">\n" +
-    "      <button ng-click=\"questionCtrl.add()\" class=\"btn-primary\">Add Note</button>\n" +
+    "  </div>\n" +
+    "  <div class=\"row pad-top\"> \n" +
+    "    <div class=\"col-sm-2 col-sm-offset-5\">\n" +
+    "      <button ng-click=\"questionCtrl.add()\" class=\"col-xs-12 btn-primary\">Add Note</button>\n" +
     "    </div>\n" +
     "  </div>\n" +
     "</div>");
@@ -56,14 +62,6 @@ angular.module("main/partials/test.jade", []).run(["$templateCache", function($t
 angular.module("main/partials/view.jade", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("main/partials/view.jade",
     "<div class=\"container-fluid panel-area\">\n" +
-    "  <div class=\"panel panel-default panel-tall\">\n" +
-    "    <div class=\"panel-heading\">Users</div>\n" +
-    "    <div class=\"panel-body\">\n" +
-    "      <jg-note-list notes=\"noteCtrl.notes\"></jg-note-list>\n" +
-    "    </div>\n" +
-    "    <div class=\"panel-footer\">\n" +
-    "      <button ng-click=\"mainCtrl.go('hi')\">Test</button>\n" +
-    "    </div>\n" +
-    "  </div>\n" +
+    "  <jg-note-list notes=\"noteCtrl.notes\"></jg-note-list>\n" +
     "</div>");
 }]);

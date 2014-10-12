@@ -7,10 +7,11 @@ var app = angular.module('jg.ngGrails', [
 app.config(function ($routeProvider) {
     $routeProvider.when('/', {
         templateUrl: 'main/partials/view.jade',
-        controller: 'questionController'
+        controller: ViewController
     })
     .when('/add', {
-        templateUrl: 'main/partials/add.jade'
+        templateUrl: 'main/partials/add.jade',
+        controller: AddController
     })
     .otherwise({
         redirectTo: '/'
