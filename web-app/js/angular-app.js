@@ -52,11 +52,9 @@ var ListDirective = function($templateCache) {
 angular.module('jg.ngGrails')
        .directive('jgNoteList', ListDirective);
 var AddController = function($scope){
-	$scope.addCtrl = this;
 	$scope.pageClass = "page-add";
 }
 var ViewController = function($scope){
-	$scope.viewCtrl = this;
 	$scope.pageClass = "page-view";
 }
 var AddQuestion = function(){
