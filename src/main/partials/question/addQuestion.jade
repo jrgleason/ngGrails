@@ -1,0 +1,14 @@
+.add-note
+  .row
+    h3.col-xs-offset-1 Add A Question
+  .row
+    .col-sm-4.col-sm-offset-2
+      label.col-xs-5(for="questionText") Question Text
+      input.col-xs-7(name="questionText", type="text", ng-model="questionCtrl.newQuestion.text")
+    .col-sm-4.col-sm-offset-2
+      label.col-xs-5(for="questionDesc") Question Description
+      input.col-xs-7(name="questionDesc",type="text", ng-model="questionCtrl.newQuestion.desc")
+    .col-sm-4
+      button(class="btn-primary",ng-click="questionCtrl.add()") Add Note
+      
+      

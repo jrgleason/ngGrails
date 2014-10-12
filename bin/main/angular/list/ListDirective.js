@@ -6,7 +6,9 @@ var ListDirective = function($templateCache) {
   return {
 	  restrict: "E",
 	  templateUrl: 'main/partials/list/list.jade',
-	  controller:QuestionController
+	  scope:{
+		  notes:"=",
+	  },
   }
 };
 angular.module('jg.ngGrails')

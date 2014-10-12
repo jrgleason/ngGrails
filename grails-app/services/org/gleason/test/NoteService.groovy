@@ -3,38 +3,34 @@ package org.gleason.test
 import grails.transaction.Transactional
 import grails.converters.JSON
 import groovyx.gpars.agent.Agent;
+import java.util.concurrent.ConcurrentHashMap
 
 @Transactional
 class NoteService {
 	private static key = 0;
-	private final noteState = new Agent<Map<String, Object>>([:])
+	private notes = new ConcurrentHashMap<String, String>()
 	def get(id) {
-		log.debug("We are inside the get "+id)
-		def noteList = noteState.val
+		log.debug "Getting "+id
 		if(id == null){
-			return noteList as JSON
+			return notes.values() as JSON
 		}
 		else{
-			log.debug noteList as JSON
-			noteList.each{
-				key, value -> log.debug "Is ${id} ${id.class} equal to ${key} ${key.class} ${id.equals(key)}";
-			}
-			return noteList[id]?:"No user found"
+			return notes[id]?:"No user found"
 		}
 	}
 	def create(obj){
-		log.debug "Creating service"
-		noteState << { it[(key++).toString()] = obj }
-		log.debug "Return Creating service"
+		log.debug "Creating"
+		notes.put((key++).toString(), obj)
 		"Created"
 	}
 	def update(id, obj){
-		noteState << { it[id] = obj }
+		log.debug "Updating"
+		notes[id] = obj
 		"Updated"
 	}
 	def delete(id){
-		log.debug "We are inside the remove"
-		noteState << { it.remove(id) }
+		log.debug "Deleteing"
+		notes.remove(id)
 		"Deleted"
 	}
 }
