@@ -7,7 +7,7 @@ class NoteController {
 		render(view:"app")
 	}
     def get() { 
-      log.debug("GET method "+ params.id)
+      log.info("GET method "+ params.id)
 	  render noteService.get(params.id)
     }
     def update() {
@@ -15,11 +15,11 @@ class NoteController {
 	  render noteService.update(obj)
     }
     def create(){
-      log.debug("post method ")
+      log.info("post method ")
 	  render noteService.create(JSON.parse(request.reader.text))
     }
     def delete(){
-      log.debug("Delete method "+ params.id)
+      log.info("Delete method "+ params.id)
 	  render noteService.delete(params.id)
     }
 }

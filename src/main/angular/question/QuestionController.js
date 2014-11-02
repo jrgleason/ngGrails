@@ -3,15 +3,29 @@ var QuestionController = function($scope, $interval, Restangular) {
 	var _this = this;
 	var question = Restangular.allUrl('Note');
 	this.questions = [];
-	this.getQuestions = function() {
-		question.getList().then(function(questions) {
-			_this.questions = questions;
-		});
+	var errorCount = 0;
+	var running = true;
+	function happyPath(questions){
+		errorCount = 0;
+		_this.questions = questions;
 	}
+	function problemPath(question){
+		errorCount++;
+		if(errorCount > 5){
+			running = false;
+		}
+	}
+	this.getQuestions = function() {
+		question.getList().then(happyPath, problemPath);
+	}
+	
 	this.getQuestions();
 	
 	$interval(function(){
-		_this.getQuestions();
+		if(running){
+			_this.getQuestions();
+		}
+		
 		},100);
 	
 	this.add = function() {
