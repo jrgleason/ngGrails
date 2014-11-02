@@ -10,9 +10,10 @@ angular.module("main/partials/add.jade", []).run(["$templateCache", function($te
 angular.module("main/partials/app.jade", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("main/partials/app.jade",
     "<div ng-controller=\"mainController\">\n" +
-    "  <nav role=\"search\" class=\"navbar navbar-static-top\">\n" +
+    "  <nav role=\"search\" class=\"navbar navbar-static-top\"> \n" +
     "    <div class=\"container-fluid\">\n" +
-    "      <div class=\"pull-right\"><a ng-click=\"mainCtrl.go('')\" class=\"navbar-brand\"> <span class=\"glyphicon glyphicon-home\"></span></a><a ng-click=\"mainCtrl.go('/add')\" class=\"navbar-brand\"><i class=\"fa fa-plus-circle\"></i></a><a href=\"https://github.com/jrgleason/ngGrails\" class=\"navbar-brand\"><i class=\"fa fa-github-alt\"></i></a></div>\n" +
+    "      <div class=\"navbar-brand\">AwesomeVote</div>\n" +
+    "      <div class=\"pull-right navbar-links\"><a ng-click=\"mainCtrl.go('')\" class=\"navbar-brand\"> <span class=\"glyphicon glyphicon-home\"></span></a><a ng-click=\"mainCtrl.go('/add')\" class=\"navbar-brand\"><i class=\"fa fa-plus-circle\"></i></a><a href=\"https://github.com/jrgleason/ngGrails\" class=\"navbar-brand\"><i class=\"fa fa-github-alt\"></i></a></div>\n" +
     "    </div>\n" +
     "  </nav>\n" +
     "  <div data-ng-view=\"data-ng-view\" ng-class=\"pageClass\" class=\"page\"></div>\n" +
@@ -21,13 +22,24 @@ angular.module("main/partials/app.jade", []).run(["$templateCache", function($te
 
 angular.module("main/partials/list/list.jade", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("main/partials/list/list.jade",
-    "<ul>\n" +
-    "  <li ng-repeat=\"(key, question) in questionCtrl.questions\"> \n" +
-    "    <h3>{{question.text}}</h3>\n" +
-    "    <p>{{question.desc}} </p><a> <i ng-click=\"questionCtrl.voteDown({{key}})\" class=\"fa fa-caret-down\"></i></a><a> <i ng-click=\"questionCtrl.voteUp({{key}})\" class=\"fa fa-caret-up\"></i></a>\n" +
-    "    <input type=\"hidden\" value=\"{{question.key}}\"/>\n" +
+    "<ul class=\"question-list\">\n" +
+    "  <li ng-repeat=\"(key, question) in questionCtrl.questions\" class=\"row\"> \n" +
+    "    <div class=\"col-xs-2 col-sm-offset-1\">\n" +
+    "      <div class=\"row\"><a class=\"vote-icon\"> <i ng-click=\"questionCtrl.voteUp($index)\" class=\"fa fa-caret-up\"></i></a></div>\n" +
+    "      <div class=\"row\">\n" +
+    "        <div class=\"vote-amount\">\n" +
+    "          <p>{{question.voteCount}}</p>\n" +
+    "        </div>\n" +
+    "      </div>\n" +
+    "      <div class=\"row\"><a class=\"vote-icon\"> <i ng-click=\"questionCtrl.voteDown($index)\" class=\"fa fa-caret-down\"></i></a></div>\n" +
+    "    </div>\n" +
+    "    <div class=\"col-xs-10 col-sm-8\">\n" +
+    "      <h3>{{question.text}}</h3>\n" +
+    "      <p>{{question.desc}}</p>\n" +
+    "    </div>\n" +
     "  </li>\n" +
-    "</ul>");
+    "</ul>\n" +
+    "<input type=\"hidden\" value=\"{{question.key}}\"/>");
 }]);
 
 angular.module("main/partials/question/addQuestion.jade", []).run(["$templateCache", function($templateCache) {

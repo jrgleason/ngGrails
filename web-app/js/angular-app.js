@@ -2,9 +2,11 @@ var app = angular.module('jg.ngGrails', [
             'templates-main',
             'ngRoute', 
             'ngAnimate',
-            'ngResource'
+            'restangular'
           ]);
-app.config(function ($routeProvider) {
+
+//We need to setup our router
+var RouteProvider = function ($routeProvider) {
     $routeProvider.when('/', {
         templateUrl: 'main/partials/view.jade',
         controller: ViewController
@@ -16,14 +18,24 @@ app.config(function ($routeProvider) {
     .otherwise({
         redirectTo: '/'
     });
-});
-app.directive('jgNgGrailsApp', function($templateCache){
+}
+app.config(RouteProvider);
+
+//I normally create a main directive, $rootScope pretty much handles this for you but I like to be explicit
+var MainDirective = function($templateCache){
 	return{
 		restrict: 'E',
 		scope: {},
 		templateUrl:"main/partials/app.jade"
 	}
-})
+}
+app.directive('jgNgGrailsApp', MainDirective)
+
+//This configures Restangular to our context-root
+app.config(function(RestangularProvider) {
+	RestangularProvider.setBaseUrl('/grails-angular');
+});
+
 
 var HelloController = function($scope, $location) {
 	$scope.helloCtrl = this;
@@ -68,38 +80,35 @@ var AddQuestion = function(){
 }
 angular.module('jg.ngGrails')
   .directive('jgAddQuestion', AddQuestion);
-/**
- * @param {!angular.$http} $http The Angular http service.
- * @constructor
- */
-function NoteService($http, $q, $resource){
-	/** @type {!angular.$http} */
-	this.http_ = $http;
-	this.resource_ = $resource('/grails-angular/Note/:key');
-}
-NoteService.prototype.get = function(successCallback, failCallback) {
-  console.log("NoteService get");
-  this.http_.get('/grails-angular/Note').success(successCallback).error(failCallback);
-}
-NoteService.prototype.add = function(obj){
-  var result = $q.defer();
-  this.http_.post('/grails-angular/Note', obj)
-}
-angular.module('jg.ngGrails')
-       .service('noteService', NoteService);
-var QuestionController = function($scope, $resource, noteService){
+var QuestionController = function($scope, $interval, Restangular) {
 	$scope.questionCtrl = this;
 	var _this = this;
-	var Question = $resource('/grails-angular/Note/:key');
-	this.questions = Question.query();
-	console.log(JSON.stringify(this.questions))
-	this.newQuestion;
+	var question = Restangular.allUrl('Note');
+	this.questions = [];
+	this.getQuestions = function() {
+		question.getList().then(function(questions) {
+			_this.questions = questions;
+		});
+	}
+	this.getQuestions();
 	
-	this.add = function(){
-		console.log("Saving "+JSON.stringify(this.newQuestion));
-		var readyToSave = new Question(this.newQuestion);
-		readyToSave.$save();
+	$interval(function(){
+		_this.getQuestions();
+		},100);
+	
+	this.add = function() {
+		question.post(this.newQuestion).then(function() {});
+	}
+	this.voteUp = function(index) {
+		var questionToUpdate = _this.questions[index]
+		questionToUpdate.voteCount = questionToUpdate.voteCount + 1;
+		questionToUpdate.put();
+	}
+	this.voteDown = function(index) {
+		var questionToUpdate = _this.questions[index]
+		questionToUpdate.voteCount = questionToUpdate.voteCount - 1;
+		questionToUpdate.put();
 	}
 }
-angular.module('jg.ngGrails')
-       .controller('questionController', QuestionController);
+angular.module('jg.ngGrails').controller('questionController',
+		QuestionController);

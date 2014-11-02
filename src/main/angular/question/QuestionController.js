@@ -1,16 +1,32 @@
-var QuestionController = function($scope, $resource, noteService){
+var QuestionController = function($scope, $interval, Restangular) {
 	$scope.questionCtrl = this;
 	var _this = this;
-	var Question = $resource('/grails-angular/Note/:key');
-	this.questions = Question.query();
-	console.log(JSON.stringify(this.questions))
-	this.newQuestion;
+	var question = Restangular.allUrl('Note');
+	this.questions = [];
+	this.getQuestions = function() {
+		question.getList().then(function(questions) {
+			_this.questions = questions;
+		});
+	}
+	this.getQuestions();
 	
-	this.add = function(){
-		console.log("Saving "+JSON.stringify(this.newQuestion));
-		var readyToSave = new Question(this.newQuestion);
-		readyToSave.$save();
+	$interval(function(){
+		_this.getQuestions();
+		},100);
+	
+	this.add = function() {
+		question.post(this.newQuestion).then(function() {});
+	}
+	this.voteUp = function(index) {
+		var questionToUpdate = _this.questions[index]
+		questionToUpdate.voteCount = questionToUpdate.voteCount + 1;
+		questionToUpdate.put();
+	}
+	this.voteDown = function(index) {
+		var questionToUpdate = _this.questions[index]
+		questionToUpdate.voteCount = questionToUpdate.voteCount - 1;
+		questionToUpdate.put();
 	}
 }
-angular.module('jg.ngGrails')
-       .controller('questionController', QuestionController);
+angular.module('jg.ngGrails').controller('questionController',
+		QuestionController);

@@ -1,7 +1,8 @@
 div(ng-controller="mainController")
-  nav.navbar.navbar-static-top(role="search")
+  nav.navbar.navbar-static-top(role="search")  
     .container-fluid
-      .pull-right
+      .navbar-brand AwesomeVote
+      .pull-right.navbar-links
         a.navbar-brand(ng-click="mainCtrl.go('')") 
           span.glyphicon.glyphicon-home
         a.navbar-brand(ng-click="mainCtrl.go('/add')")

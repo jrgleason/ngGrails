@@ -11,8 +11,8 @@ class NoteController {
 	  render noteService.get(params.id)
     }
     def update() {
-      log.debug("POST method "+ params.id)
-	  render noteService.update(params.id, JSON.parse(request.reader.text))
+	  def obj = JSON.parse(request.reader.text);
+	  render noteService.update(obj)
     }
     def create(){
       log.debug("post method ")

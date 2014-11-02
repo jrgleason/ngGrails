@@ -7,7 +7,7 @@ class UrlMappings {
 		   }
 	    }
 
-		"/Note"(controller: "note", parseRequest: true) {
+		"/Note/$id?"(controller: "note", parseRequest: true) {
 			action = [GET: "get", POST: "create", PUT: "update", DELETE: "delete"]
 		}
 		"/"(view:"/app")

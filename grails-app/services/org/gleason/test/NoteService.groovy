@@ -21,12 +21,13 @@ class NoteService {
 	def create(obj){
 		log.debug "Creating"
 		obj.key = key++
+		obj.voteCount = 0
 		notes.put(obj.key.toString(), obj)
 		"Created"
 	}
-	def update(id, obj){
-		log.debug "Updating"
-		notes[id] = obj
+	def update(obj){
+		log.debug "Updating "+ (obj as JSON)
+		notes[obj.key.toString()] = obj
 		"Updated"
 	}
 	def delete(id){
