@@ -1,10 +1,12 @@
 var QuestionController = function($scope, $interval, Restangular) {
 	$scope.questionCtrl = this;
-	var _this = this;
-	var question = Restangular.allUrl('Note');
+	var _this = this,
+	    question = Restangular.allUrl('Note'),
+	    errorCount = 0,
+	    running = true;
+	
 	this.questions = [];
-	var errorCount = 0;
-	var running = true;
+	
 	function happyPath(questions){
 		errorCount = 0;
 		_this.questions = questions;

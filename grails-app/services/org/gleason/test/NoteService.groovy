@@ -8,7 +8,7 @@ import java.util.concurrent.ConcurrentHashMap
 @Transactional
 class NoteService {
 	private static key = 0;
-	private notes = new ConcurrentHashMap<String, String>()
+	def notes = new ConcurrentHashMap<String, String>()
 	def get(id) {
 		log.debug "Getting "+id
 		if(id == null){
