@@ -48,7 +48,9 @@ module.exports = function(grunt) {
 	        	remove: true
 	        },
 	        release: {
-	        	'build/ng-grails-annotated.js': ['build/ng-grails.js']
+	        	files: {
+	        	  'build/ng-grails-annotated.js': ['build/ng-grails.js']
+	        	}
 	        },
 	    },
 	    uglify: {
