@@ -7,3 +7,5 @@ target-eclipse
 *.swp
 *.swo
 bin
+build
+ng-grails.js

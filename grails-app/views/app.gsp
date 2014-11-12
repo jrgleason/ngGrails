@@ -15,6 +15,6 @@
 	<body ng-app="jg.ngGrails">
 		<jg-ng-grails-app></jg-ng-grails-app>
 		<script src="js/templates.js"></script>
-        <script src="js/angular-app.js"></script>
+        <script src="js/ng-grails.js"></script>
 	</body>
 </html>

@@ -7,6 +7,10 @@
     "grunt-contrib-concat":"*",
     "grunt-contrib-watch":"*",
     "html2js":"*",
-    "grunt-html2js":"*"
+    "grunt-html2js":"*",
+    "grunt-contrib-clean":"*",
+    "grunt-contrib-uglify":"*",
+    "grunt-ng-annotate":"*",
+    "grunt-contrib-copy":"*"
   }
 }
