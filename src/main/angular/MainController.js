@@ -1,7 +1,7 @@
-var MainController = function($scope, $location){
+function MainController($scope, navService){
 	$scope.mainCtrl = this;
 	this.go = function (path) {
-        $location.path(path);
+		navService.go(path);
     }
 }
 angular.module('jg.ngGrails')

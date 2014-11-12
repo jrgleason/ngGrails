@@ -1,4 +1,4 @@
-var AddQuestion = function(){
+function AddQuestion(){
 	return{
 		restrict: "E",
 		replace: false,
