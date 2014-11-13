@@ -6,37 +6,41 @@ function QuestionController($scope, $interval, Restangular, navService) {
 	    running = true;
 	
 	this.questions = [];
-	
 	$scope.mainCtrl = this;
+	
 	function go(path) {
 		navService.go(path);
     }
 	
-	function happyPath(questions){
+	function questionsReceived(questions){
 		errorCount = 0;
 		if(_this.questions.length != questions.length){
 			_this.questions = questions;
 		}
 		
 	}
-	function problemPath(question){
-		errorCount++;
-		if(errorCount > 5){
-			running = false;
-		}
+	function questionsFailed(question){
+		running = !(++errorCount > 5);
 	}
 	this.getQuestions = function() {
-		question.getList().then(happyPath, problemPath);
+		question.getList().then(questionsReceived, questionsFailed);
 	}
 	
 	this.getQuestions();
 	
-	$interval(function(){
+	var clock = $interval(function(){
 		if(running){
 			_this.getQuestions();
 		}
 		
 		},100);
+	//On exit lets kill our clock
+	$scope.$on('$destroy', function() {
+		  if (angular.isDefined(clock)) {
+	        $interval.cancel(clock);
+	        stop = undefined;
+	      }
+		})
 	
 	this.add = function() {
 		question.post(this.newQuestion);
@@ -44,12 +48,12 @@ function QuestionController($scope, $interval, Restangular, navService) {
 	}
 	this.voteUp = function(index) {
 		var questionToUpdate = _this.questions[index]
-		questionToUpdate.voteCount = questionToUpdate.voteCount + 1;
+		questionToUpdate.voteCount++;
 		questionToUpdate.put();
 	}
 	this.voteDown = function(index) {
 		var questionToUpdate = _this.questions[index]
-		questionToUpdate.voteCount = questionToUpdate.voteCount - 1;
+		questionToUpdate.voteCount--;
 		questionToUpdate.put();
 	}
 }

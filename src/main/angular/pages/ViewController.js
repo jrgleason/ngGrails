@@ -1,3 +1,3 @@
-var ViewController = function($scope){
+function ViewController($scope){
 	$scope.pageClass = "page-view";
 }

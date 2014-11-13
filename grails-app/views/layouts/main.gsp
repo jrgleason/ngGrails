@@ -17,5 +17,6 @@
 	</head>
 	<body  ng-app="jg.ngGrails">
 		<g:layoutBody/>
+		<asset:javascript src="application.js"/>
 	</body>
 </html>
