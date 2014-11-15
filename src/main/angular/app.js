@@ -11,8 +11,7 @@ var RouteProvider = function ($routeProvider) {
         templateUrl: 'main/partials/view.jade'
     })
     .when('/add', {
-        templateUrl: 'main/partials/add.jade',
-        controller: AddController
+        templateUrl: 'main/partials/add.jade'
     })
     .otherwise({
         redirectTo: '/'
