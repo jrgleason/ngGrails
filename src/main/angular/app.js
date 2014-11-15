@@ -1,5 +1,5 @@
 var app = angular.module('jg.ngGrails', [ 
-            'templates-main',
+            'templates-build',
             'ngRoute', 
             'ngAnimate',
             'restangular'
