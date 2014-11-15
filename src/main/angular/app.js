@@ -8,8 +8,7 @@ var app = angular.module('jg.ngGrails', [
 //We need to setup our router
 var RouteProvider = function ($routeProvider) {
     $routeProvider.when('/', {
-        templateUrl: 'main/partials/view.jade',
-        controller: ViewController
+        templateUrl: 'main/partials/view.jade'
     })
     .when('/add', {
         templateUrl: 'main/partials/add.jade',

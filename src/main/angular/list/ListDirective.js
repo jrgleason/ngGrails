@@ -6,7 +6,7 @@ function ListDirective($templateCache) {
   return {
 	  restrict: "E",
 	  templateUrl: 'main/partials/list/list.jade',
-	  controller:QuestionController
+	  controller:  QuestionController
   }
 };
 angular.module('jg.ngGrails')
