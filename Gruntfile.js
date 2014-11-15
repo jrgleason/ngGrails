@@ -28,7 +28,7 @@ module.exports = function(grunt) {
 		    }
 		},
 		clean: {
-			  build: ["build",'web-app/js/ng-grails.js']
+			  build: ["build",'web-app/js/ng-grails.js','web-app/js/templates.js']
 	    },
 		watch : {
 			html2js : {
