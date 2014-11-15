@@ -17,6 +17,11 @@ function QuestionController($scope, $interval, Restangular, navService) {
 		if(_this.questions.length != questions.length){
 			_this.questions = questions;
 		}
+		else{
+			angular.forEach(questions,function(value, key){
+				_this.questions[key].voteCount = value.voteCount
+			})
+		}
 		
 	}
 	function questionsFailed(question){
