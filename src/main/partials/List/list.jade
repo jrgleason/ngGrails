@@ -1,6 +1,5 @@
-
 ul.question-list
-  li.row(ng-repeat="(key, question) in questionCtrl.questions") 
+  li.row.question-item(ng-repeat="(key, question) in questionCtrl.questions") 
     .col-xs-2.col-sm-offset-1
       .row
         a.vote-icon 
@@ -14,7 +13,4 @@ ul.question-list
     .col-xs-10.col-sm-8
       h3 {{question.text}}
       p {{question.desc}}
-    
-      
-          
 input(type="hidden", value="{{question.key}}") 
