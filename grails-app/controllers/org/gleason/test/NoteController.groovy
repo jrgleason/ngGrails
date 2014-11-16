@@ -16,14 +16,13 @@ class NoteController {
 		def obj = JSON.parse(request.reader.text);
 		render noteService.update(obj)
 	}
-	def create(){
-		render noteService.create(JSON.parse(request.reader.text))
+	def create(Question q){
+		render noteService.create(q)
 	}
-	def delete(Question q){
+	def delete(){
 		def text = request.reader.text;
-		println "The question has a text of ${q.text}"
 		def slurper = new JsonSlurper();
-		def result = slurper.parseText(text);
+		def result = slurper.parseText(text)
 		render noteService.delete(result.key)
 	}
 }

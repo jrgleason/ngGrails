@@ -8,9 +8,9 @@ class Question {
 	String text
 	String desc
 	Integer voteCount
-//	static constraints = {
-//		key unique: true
-//		text blank: false
-//		desc blank: false
-//	}
+	static constraints = {
+		key unique: true
+		text blank: false
+		desc blank: false
+	}
 }
