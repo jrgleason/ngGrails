@@ -1,6 +1,6 @@
 ul.question-list
   li.row.question-item(ng-repeat="(key, question) in questionCtrl.questions") 
-    .col-xs-2.col-sm-offset-1
+    .col-xs-2.col-sm-offset-1.vote-area
       .row
         a.vote-icon 
           i.fa.fa-caret-up(ng-click="questionCtrl.voteUp($index)")
@@ -10,7 +10,14 @@ ul.question-list
       .row
         a.vote-icon 
           i.fa.fa-caret-down(ng-click="questionCtrl.voteDown($index)")
-    .col-xs-10.col-sm-8
-      h3 {{question.text}}
-      p {{question.desc}}
+    .col-xs-11.col-sm-10.vote-text
+      .row
+        .pull-left
+          h3 {{question.text}}
+        .pull-right.header-control
+          h3
+            i.fa.fa-pencil-square-o
+            i.fa.fa-times(ng-click="questionCtrl.delete($index)")     
+      .row.vote-desc
+        p {{question.desc}}
 input(type="hidden", value="{{question.key}}") 

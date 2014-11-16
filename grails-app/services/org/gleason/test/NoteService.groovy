@@ -10,7 +10,7 @@ class NoteService {
 	private static key = 0;
 	def notes = new ConcurrentHashMap<String, String>()
 	def get(id) {
-		log.debug "Getting "+id
+//		log.debug "Getting "+id
 		if(id == null){
 			return notes.values() as JSON
 		}
@@ -31,8 +31,6 @@ class NoteService {
 		"Updated"
 	}
 	def delete(id){
-		log.debug "Deleteing"
-		notes.remove(id)
-		"Deleted"
+		notes.remove(String.valueOf(id));
 	}
 }

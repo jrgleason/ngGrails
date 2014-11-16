@@ -61,6 +61,10 @@ function QuestionController($scope, $interval, Restangular, navService) {
 		questionToUpdate.voteCount--;
 		questionToUpdate.put();
 	}
+	this.delete = function(index) {
+		var questionToUpdate = _this.questions[index];
+		questionToUpdate.remove();
+	}
 }
 angular.module('jg.ngGrails').controller('questionController',
 		QuestionController);

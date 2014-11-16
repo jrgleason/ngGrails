@@ -1,5 +1,3 @@
-@import "bootstrap.less";
-
 html{
   height:100%;
 }
@@ -111,4 +109,35 @@ a i {
 } 
 .question-item{
   padding:10px;
+  width:100%;
+  max-width:100%;
+  overflow:scroll;
+  display:table;
+  table-layout:fixed;
 }
+.vote-area{
+  padding-right:10px;
+}  
+.vote-desc{
+  overflow:scroll;
+}
+.vote-area,.vote-text{
+  background-color:white;
+  .row {
+    margin-left: 0;
+    margin-right: 0;
+    width:100%;
+  }
+}
+.row [class*="col-"] {
+    float: none;
+    display: table-cell;
+    vertical-align: top;
+}
+.header-control{
+  i{
+    cursor:pointer;
+    margin-right:8px;
+  }
+}
+
