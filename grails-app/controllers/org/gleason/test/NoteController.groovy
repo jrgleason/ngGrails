@@ -1,4 +1,6 @@
 package org.gleason.test
+import org.gleason.test.command.Question;
+
 import grails.converters.JSON
 import groovy.json.JsonSlurper;
 
@@ -8,7 +10,6 @@ class NoteController {
 		render(view:"app")
 	}
 	def get() {
-		//      log.info("GET method "+ params.id)
 		render noteService.get(params.id)
 	}
 	def update() {
@@ -16,14 +17,13 @@ class NoteController {
 		render noteService.update(obj)
 	}
 	def create(){
-		//      log.info("post method ")
 		render noteService.create(JSON.parse(request.reader.text))
 	}
-	def delete(){
-		//      log.info("Delete method "+ params.id)
-//		println "params.id ${request.reader.text}"
+	def delete(Question q){
+		def text = request.reader.text;
+		println "The question has a text of ${q.text}"
 		def slurper = new JsonSlurper();
-		def result = slurper.parseText(request.reader.text);
+		def result = slurper.parseText(text);
 		render noteService.delete(result.key)
 	}
 }

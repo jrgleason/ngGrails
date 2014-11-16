@@ -6,6 +6,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-ng-annotate');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-copy');
+	grunt.loadNpmTasks('grunt-cucumber');
 	grunt.initConfig({
 		pkg : grunt.file.readJSON('package.json'),
 		html2js : {
@@ -72,6 +73,12 @@ module.exports = function(grunt) {
               ],
           }
         },
+        cucumberjs: {
+            src: 'src/test/features',
+            options: {
+              steps: "src/test/features/step_definitions"
+            }
+        }
 	});
 	grunt.registerTask('default', [ 'build' ]);
 	grunt.registerTask('build', [ 'clean', 'html2js', 'concat', 'copy:build']);
