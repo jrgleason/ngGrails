@@ -17,6 +17,10 @@ body{
   margin: 80px auto;
   min-height:800px;
 }
+.add-question{
+  background-color:white;
+  padding:10px
+}
 a.navbar-brand{
   color:white;
 }
@@ -102,11 +106,12 @@ a i {
 .navbar .navbar-nav>li>a,.navbar .navbar-brand{
   color:#C8C8C8
 }
-// .navbar-links{
-//  a:hover{
+.navbar-links{
+  a:hover{
+    color:gray;
 //    transform: scale(1.5);
-//  }
-// } 
+  }
+} 
 .question-item{
   padding:10px;
   width:100%;
@@ -124,11 +129,13 @@ a i {
 .vote-area,.vote-text{
   background-color:white;
   .row {
-    margin-left: 0;
-    margin-right: 0;
     width:100%;
   }
 }
+.row {
+    margin-left: 0;
+    margin-right: 0;
+  }
 .row [class*="col-"] {
     float: none;
     display: table-cell;

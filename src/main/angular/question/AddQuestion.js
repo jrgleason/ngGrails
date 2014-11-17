@@ -4,7 +4,7 @@ function AddQuestion(){
 		replace: false,
 		scope: {},
 		templateUrl: "main/partials/question/addQuestion.jade",
-		controller: QuestionController
+		controller: QuestionController,
 	}
 }
 angular.module('jg.ngGrails')

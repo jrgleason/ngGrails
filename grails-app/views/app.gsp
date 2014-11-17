@@ -13,7 +13,10 @@
         <script src="http://cdnjs.cloudflare.com/ajax/libs/restangular/1.3.1/restangular.min.js"></script>
 	</head>
 	<body ng-app="jg.ngGrails">
-		<jg-ng-grails-app></jg-ng-grails-app>
+		<jg-ng-grails-app>
+		</jg-ng-grails-app>
+		<script src='//cdnjs.cloudflare.com/ajax/libs/textAngular/1.2.2/textAngular-sanitize.min.js'></script>
+        <script src='//cdnjs.cloudflare.com/ajax/libs/textAngular/1.2.2/textAngular.min.js'></script>
         <script src="js/ng-grails.js"></script>
 	</body>
 </html>

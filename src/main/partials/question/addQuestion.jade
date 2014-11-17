@@ -2,12 +2,11 @@
   .row
      h3.col-xs-offset-1 Add A Question
   .row
-    .col-sm-6
       label.col-xs-5(for="questionText") Question Text
       input.col-xs-7#questionText(name="questionText", type="text", ng-model="questionCtrl.newQuestion.text")
-    .col-sm-6
+  .row
       label.col-xs-5(for="questionDesc") Question Description
-      input.col-xs-7#questionDesc(name="questionDesc",type="text", ng-model="questionCtrl.newQuestion.desc")
+      text-angular(ng-model="questionCtrl.newQuestion.desc")
   .row.pad-top 
     .col-sm-2.col-sm-offset-5
       button.col-xs-12(class="btn-primary",ng-click="questionCtrl.add()") Add Note
