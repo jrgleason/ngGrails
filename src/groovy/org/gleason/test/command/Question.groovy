@@ -1,6 +1,6 @@
 package org.gleason.test.command
 
-import org.codehaus.groovy.grails.validation.Validateable;
+import grails.validation.Validateable
 
 @Validateable
 class Question {
