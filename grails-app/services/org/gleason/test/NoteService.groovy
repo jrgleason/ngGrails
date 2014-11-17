@@ -1,11 +1,9 @@
 package org.gleason.test
 
-import grails.transaction.Transactional
 import grails.converters.JSON
 import groovyx.gpars.agent.Agent;
 import java.util.concurrent.ConcurrentHashMap
 
-@Transactional
 class NoteService {
 	private static key = 0;
 	def notes = new ConcurrentHashMap<String, String>()
