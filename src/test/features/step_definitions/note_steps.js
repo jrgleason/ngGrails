@@ -1,14 +1,18 @@
 var Browser = require('zombie'),
-    assert = require("assert");
+    assert = require("assert"),
+    Chance = require('chance');
 var noteStepDefinitionWrapper = function() {
-	var browser = null;
-	var silent = false;
-	var debug = false;
+	var browser = null,
+	    silent = false,
+	    debug = false,
+	    chance = new Chance(),
+	    title;
 	var Given = When = Then = this.defineStep;
 	this.Before(function(callback) {
 		browser = new Browser();
 		browser.setMaxListeners(20);
 		setTimeout(callback(), 5000);
+		title = chance.string({length: 20});
 	});
 
 	this.World = require("../support/world.js").World; // overwrite default
@@ -28,13 +32,11 @@ var noteStepDefinitionWrapper = function() {
 			debug : debug
 		});
 		browser.wait(function() {
-			console.log("Browser Text is " + browser.html('#add-question'));
 			callback();
 		});
 	});
 
 	this.When(/^I click the add button$/, function(callback) {
-		console.log("Step 2")
 		browser.clickLink('#add-question', function() {
 				var promise = browser.wait(addQuestionFormLoaded, null)
 				promise.then(function() {
@@ -45,7 +47,7 @@ var noteStepDefinitionWrapper = function() {
 
 	this.When(/^I fill out question information$/, function(callback) {
 		assert.ok(browser.query(addForm), "It should have the add form");
-		browser.fill("#questionDesc", "Test Desc").fill("#questionText", "Test Text");
+		browser.fill("#questionDesc", "Test Desc").fill("#questionText", title);
 		callback();
 	});
 
@@ -55,7 +57,9 @@ var noteStepDefinitionWrapper = function() {
 		});
 	});
 	this.Then(/^I should see the new question$/, function(callback) {
-		console.log("Step 5")
+		var x = browser.html(".question-text");
+		var hasText = (x.indexOf(title) > -1)
+		assert.equal(hasText, true, "The title should show up somewhere in the questions text.");
 		callback();
 	});
 };

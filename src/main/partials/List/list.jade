@@ -13,11 +13,11 @@ ul.question-list
     .col-xs-11.col-sm-10.vote-text
       .row
         .pull-left
-          h3 {{question.text}}
+          h3.question-text {{question.text}}
         .pull-right.header-control
           h3
             i.fa.fa-pencil-square-o
             i.fa.fa-times(ng-click="questionCtrl.delete($index)")     
       .row.vote-desc
-        p {{question.desc}}
+        p.question-desc {{question.desc}}
 input(type="hidden", value="{{question.key}}") 

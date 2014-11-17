@@ -15,6 +15,7 @@
     "grunt-html2js": "*",
     "grunt-ng-annotate": "*",
     "html2js": "*",
+    "chance":"*",
     "zombie": "*"
   }
 }
