@@ -2,6 +2,7 @@ var app = angular.module('jg.ngGrails', [
             'templates-build',
             'ngRoute', 
             'ngAnimate',
+            'textAngular',
             'restangular'
           ]);
 

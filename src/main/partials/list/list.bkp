@@ -1,5 +1,5 @@
 ul.question-list
-  li.row.question-item(ng-repeat="(key, question) in questionCtrl.questions")
+  li.row.question-item(ng-repeat="(key, question) in questionCtrl.questions") 
     .col-xs-2.col-sm-offset-1.vote-area
       .row
         a.vote-icon 
@@ -20,3 +20,4 @@ ul.question-list
             i.fa.fa-times(ng-click="questionCtrl.delete($index)")     
       .row.vote-desc
         p.question-desc {{question.desc}}
+    input(type="hidden", value="{{question.key}}") 

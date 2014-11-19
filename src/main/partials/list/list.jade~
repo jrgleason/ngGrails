@@ -20,3 +20,4 @@ ul.question-list
             i.fa.fa-times(ng-click="questionCtrl.delete($index)")     
       .row.vote-desc
         p.question-desc {{question.desc}}
+    input(type="hidden", value="{{question.key}}") 
