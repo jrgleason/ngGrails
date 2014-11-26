@@ -65,6 +65,10 @@ function QuestionController($scope, $interval, Restangular, navService) {
 		var questionToUpdate = _this.questions[index];
 		questionToUpdate.remove();
 	}
+	this.edit = function(index){
+		var questionToUpdate = _this.questions[index]
+		questionToUpdate.put();
+	}
 }
 angular.module('jg.ngGrails').controller('questionController',
 		QuestionController);
