@@ -13,10 +13,10 @@ var RouteProvider = function ($routeProvider) {
     })
     .when('/add', {
         templateUrl: 'main/partials/add.jade'
+        	
     })
-    .when('/edit/:id', {
-        templateUrl: 'main/partials/edit.jade',
-        controller: 'TmpController'
+    .when('/edit', {
+        templateUrl: 'main/partials/edit.jade'
     })
     .otherwise({
         redirectTo: '/'

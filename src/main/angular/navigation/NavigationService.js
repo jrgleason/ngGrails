@@ -4,4 +4,4 @@ function NavigationService($location){
     }
 }
 angular.module('jg.ngGrails')
-.service('navService', NavigationService);
+       .service('navService', NavigationService);
