@@ -21,7 +21,6 @@ var WorldConstructor = function WorldConstructor(callback) {
 			});
 		}.bind(this),
 		clickLink : function(selector, callback) {
-			console.log("Test dfdsfs");
 			this.browser.clickLink(selector, function() {
 				var promise = _this.browser.wait(addQuestionFormLoaded, null)
 				console.log("Test 123");
@@ -34,7 +33,7 @@ var WorldConstructor = function WorldConstructor(callback) {
 		fillQuestionForm: function(callback){
 			var title = this.chance.string({length: 20});
 			assert.ok(this.browser.query(addForm), "It should have the add form");
-			this.browser.fill("#questionDesc", "Test Desc").fill("#questionText", this.title);
+			this.browser.fill('textArea[id^="taHtmlElement"]', "Test Desc").fill("#questionText", this.title);
 			this.browser.pressButton("Add Note", function() {
 				callback();
 			});
@@ -44,7 +43,7 @@ var WorldConstructor = function WorldConstructor(callback) {
 			var hasText = (x.indexOf(this.title) > -1)
 			assert.equal(hasText, true, "The title should show up somewhere in the questions text.");
 			callback();
-		}
+		}.bind(this)
 	}
 
 	callback(world); // tell Cucumber we're finished and to use our world
