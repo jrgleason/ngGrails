@@ -5,7 +5,7 @@ import java.util.concurrent.ConcurrentHashMap
 
 import org.gleason.test.command.Question;
 
-class NoteService {
+class QuestionService {
 	private static key = 0;
 	def notes = new ConcurrentHashMap<String, String>()
 	def messageSource

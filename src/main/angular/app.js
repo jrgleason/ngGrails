@@ -35,7 +35,7 @@ var MainDirective = function($templateCache){
 app.directive('jgNgGrailsApp', MainDirective)
 
 //This configures Restangular to our context-root
-app.config(function(RestangularProvider) {
-	RestangularProvider.setBaseUrl('/grails-angular');
-});
+//app.config(function(RestangularProvider) {
+//	RestangularProvider.setBaseUrl('/grails-angular');
+//});
 

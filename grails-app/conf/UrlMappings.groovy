@@ -8,7 +8,7 @@ class UrlMappings {
 //		   }
 //	    }
 
-		"/Note/$id?"(controller: "note", parseRequest: true) {
+		"/Note/$id?"(controller: "question", parseRequest: true) {
 			action = [GET: "get", POST: "create", PUT: "update", DELETE: "delete"]
 		}
 		"/socket"(controller:"socket"){

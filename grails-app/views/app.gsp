@@ -9,7 +9,7 @@
         <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-route.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-animate.min.js"></script>    
         <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
-        <script src="http://cdnjs.cloudflare.com/ajax/libs/restangular/1.3.1/restangular.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/restangular/1.3.1/restangular.min.js"></script>
 	</head>
 	<body ng-app="jg.ngGrails">
 		<jg-ng-grails-app>

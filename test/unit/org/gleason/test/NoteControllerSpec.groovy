@@ -6,14 +6,14 @@ import spock.lang.Specification
 /**
  * See the API for {@link grails.test.mixin.web.ControllerUnitTestMixin} for usage instructions
  */
-@TestFor(NoteController)
-@Mock([NoteService])
+@TestFor(QuestionController)
+@Mock([QuestionService])
 class NoteControllerSpec extends Specification {
-	NoteService noteService
+	QuestionService questionService
 	
     def setup() {
-		noteService = Mock()
-		controller.noteService = noteService
+		questionService = Mock()
+		controller.questionService = questionService
     }
 
     def cleanup() {
@@ -23,6 +23,6 @@ class NoteControllerSpec extends Specification {
       	when:
 		  controller.get()
 		then:
-		  1 * noteService.get(_) >> []
+		  1 * questionService.get(_) >> []
 	}
 }
