@@ -9,9 +9,10 @@ function QuestionService($interval, Restangular) {
 			while(_this.questions.length > 0) {
 				_this.questions.pop();
 			}
-			angular.forEach(questions, function(value) {
+			var q = angular.forEach(questions, function(value) {
 				_this.questions.push(value)
-			})
+			});
+			
 		} else {
 			angular.forEach(questions, function(value, key) {
 				_this.questions[key].voteCount = value.voteCount

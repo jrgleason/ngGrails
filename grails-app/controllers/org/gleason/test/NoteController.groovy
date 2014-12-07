@@ -10,14 +10,14 @@ class NoteController {
 		render(view:"app")
 	}
 	def get() {
-		render noteService.get(params.id)
+		render noteService.get(params.id) as JSON
 	}
 	def update() {
 		def obj = JSON.parse(request.reader.text);
-		render noteService.update(obj)
+		render noteService.update(obj) as JSON
 	}
 	def create(Question q){
-		render noteService.create(q)
+		render noteService.create(q) as JSON
 	}
 	def delete(){
 		def text = request.reader.text;
