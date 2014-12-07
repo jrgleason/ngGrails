@@ -5,7 +5,7 @@
 function ListDirective($templateCache) {
   return {
 	  restrict: "E",
-	  templateUrl: 'main/partials/list/list.jade',
+	  templateUrl: 'main/partials/question/listQuestion.jade',
 	  controller:  'questionController'
   }
 };
