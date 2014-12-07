@@ -16,7 +16,7 @@ ul.question-list
           h3.question-text {{question.text}}
         .pull-right.header-control
           h3
-            i.fa.fa-pencil-square-o(ng-click="questionCtrl.edit(key)")
+            i.fa.fa-pencil-square-o(ng-click="questionCtrl.gotoEdit(key)")
             i.fa.fa-times(ng-click="questionCtrl.delete($index)")     
       .row.vote-desc
         .question-desc(ng-bind-html="question.desc")

@@ -6,7 +6,7 @@
       input.col-xs-7#questionText(name="questionText", type="text", ng-model="questionCtrl.selectedQuestion.text")
   .row
       label.col-xs-5(for="questionDesc") Question Description
-      text-angular(ng-model="questionCtrl.selectedQuestion..desc")
+      text-angular(ng-model="questionCtrl.selectedQuestion.desc")
   .row.pad-top 
     .col-sm-2.col-sm-offset-5
-      button.col-xs-12(class="btn-primary",ng-click="questionCtrl.edit()") Add Note
+      button.col-xs-12(class="btn-primary", ng-click="questionCtrl.edit(questionCtrl.selectedId)") Edit Question
