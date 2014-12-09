@@ -28,7 +28,7 @@ app.config(RouteProvider);
 var MainDirective = function($templateCache){
 	return{
 		restrict: 'E',
-		scope: {},
+		scope: {},g
 		templateUrl:"main/partials/app.jade"
 	}
 }
@@ -36,6 +36,6 @@ app.directive('jgNgGrailsApp', MainDirective)
 
 //This configures Restangular to our context-root
 app.config(function(RestangularProvider) {
-	RestangularProvider.setBaseUrl('/grails-angular');
+	RestangularProvider.setBaseUrl(appContext);
 });
 

@@ -5,11 +5,12 @@
      .validation-error(ng-repeat="errorMessage in questionCtrl.errorMessages")
        p {{errorMessage}}
   .row
-      label.col-xs-5(for="questionText") Question Text
-      input.col-xs-7#questionText(name="questionText", type="text", ng-model="questionCtrl.selectedQuestion.text")
-  .row
-      label.col-xs-5(for="questionDesc") Question Description
-      text-angular(ng-model="questionCtrl.selectedQuestion.desc")
+      .input-group
+        label(for="questionText") Question Text
+        input#questionText(name="questionText", type="text", ng-model="questionCtrl.selectedQuestion.text")
+      .input-group
+        label(for="questionDesc") Question Description
+        text-angular(ng-model="questionCtrl.selectedQuestion.desc")
   .row.pad-top 
-    .col-sm-2.col-sm-offset-5
+    .col-sm-offset-2
        button(class="btn btn-primary",ng-click="questionCtrl.edit(questionCtrl.selectedId)") Edit Question

@@ -84,4 +84,12 @@
 		border-top-left-radius: 0px;
 		margin: 0;
 	}
+	.page > div{
+	    width: 100%;
+	    padding-left:0;
+	    padding-right:0;
+	}
+	.question-item{
+	  padding:0 !important;
+	}
 }

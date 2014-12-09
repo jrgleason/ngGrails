@@ -16,6 +16,9 @@
 		</jg-ng-grails-app>
 		<script src='//cdnjs.cloudflare.com/ajax/libs/textAngular/1.2.2/textAngular-sanitize.min.js'></script>
         <script src='//cdnjs.cloudflare.com/ajax/libs/textAngular/1.2.2/textAngular.min.js'></script>
+        <g:javascript>
+          window.appContext = '${request.contextPath}';
+        </g:javascript>
         <script src="js/ng-grails.js"></script>
 	</body>
 </html>

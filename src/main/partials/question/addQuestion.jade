@@ -6,10 +6,10 @@
        p {{errorMessage}}
   .row
       .input-group
-        label.col-xs-5(for="questionText") Question Text
-        input.col-xs-7#questionText(name="questionText", type="text", ng-model="questionCtrl.newQuestion.text")
+        label(for="questionText") Question Text
+        input#questionText(name="questionText", type="text", ng-model="questionCtrl.newQuestion.text")
       .input-group  
-        label.col-xs-5(for="questionDesc") Question Description
+        label(for="questionDesc") Question Description
         text-angular(ng-model="questionCtrl.newQuestion.desc")
   .row.pad-top 
     .col-sm-offset-2
