@@ -28,7 +28,7 @@ app.config(RouteProvider);
 var MainDirective = function($templateCache){
 	return{
 		restrict: 'E',
-		scope: {},g
+		scope: {},
 		templateUrl:"main/partials/app.jade"
 	}
 }
