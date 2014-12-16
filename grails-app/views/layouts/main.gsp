@@ -16,6 +16,8 @@
 		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 		<g:layoutHead/>
 		<asset:stylesheet src="application.css"/>
+		<asset:javascript src="jquery" />
+		<asset:javascript src="spring-websocket" />
 	</head>
 	<body  ng-app="jg.ngGrails">
 		<g:layoutBody/>

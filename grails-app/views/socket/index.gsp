@@ -2,9 +2,12 @@
 <html>
    <head>
       <meta name="layout" content="main"/>
-      <asset:javascript src="jquery" />
-      <asset:javascript src="spring-websocket" />
 
+      
+   </head>
+   <body>
+      <button id="helloButton">hello</button>
+      <div id="helloDiv"></div>
       <script type="text/javascript">
           $(function() {
             var socket = new SockJS("${createLink(uri: '/stomp')}");
@@ -21,9 +24,5 @@
             });
          });
       </script>
-   </head>
-   <body>
-      <button id="helloButton">hello</button>
-      <div id="helloDiv"></div>
    </body>
 </html>

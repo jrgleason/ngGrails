@@ -10,6 +10,6 @@ class SocketController {
 	@MessageMapping("/hello")
 	@SendTo("/topic/hello")
 	protected String hello(String world) {
-	   return "hello from controller, ${world}!"
+	   return "hello from controller, ${world}!"+new String(UUID.randomUUID().getMostSignificantBits());
 	}
 }

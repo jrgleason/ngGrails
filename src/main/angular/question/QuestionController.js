@@ -18,8 +18,8 @@ function QuestionController($scope, $location, questionService) {
     }
 	
 	this.add = function() {
-		var addPromise = question.post(this.newQuestion);
-		addPromise.then(function(data){
+		questionService.add(this.newQuestion)
+                 .then(function(data){
 			if(data.errorMessages == null || data.errorMessages.length == 0){
 				$location.path('');
 			}
@@ -49,7 +49,6 @@ function QuestionController($scope, $location, questionService) {
 	}
 	this.edit = function(index){
 		var questionToUpdate = questionService.questions[index];
-		console.log("Updating Question "+ (index==null)+" "+this.selectedId+" "+questionService.selectedQuestion)
 		questionToUpdate.put();
 		$location.path('');
 	}

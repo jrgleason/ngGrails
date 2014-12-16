@@ -1,5 +1,5 @@
 function QuestionService($interval, Restangular) {
-	this.question = Restangular.allUrl('Note');
+	this.question = Restangular.all('Note');
 	var _this = this, errorCount = 0, running = true;
 	this.questions = [];
 	this.selectedQuestion;
@@ -21,6 +21,9 @@ function QuestionService($interval, Restangular) {
 	}
 	function questionsFailed(question) {
 		running = !(++errorCount > 5);
+	}
+	this.add = function(item){
+		return _this.question.post(item);
 	}
 	this.getQuestions = function() {
 		this.question.getList().then(questionsReceived, questionsFailed);

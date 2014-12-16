@@ -18,6 +18,10 @@ var RouteProvider = function ($routeProvider) {
     .when('/edit', {
         templateUrl: 'main/partials/edit.jade'
     })
+    .when('/wc', {
+    	templateUrl: 'main/partials/webComponent.jade',
+    	controller: WebComponentController
+    })
     .otherwise({
         redirectTo: '/'
     });
@@ -36,6 +40,6 @@ app.directive('jgNgGrailsApp', MainDirective)
 
 //This configures Restangular to our context-root
 app.config(function(RestangularProvider) {
-	RestangularProvider.setBaseUrl(appContext);
+	RestangularProvider.setBaseUrl(window.appContext);
 });
 

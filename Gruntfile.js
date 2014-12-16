@@ -26,7 +26,12 @@ module.exports = function(grunt) {
 		    	src:['build/ng-grails-templates.js',
 		    	     'build/ng-grails-core.js'],
 		    	dest : 'build/ng-grails.js',     
-		    }
+		    },
+			jasmine: {
+				src:['src/test/jasmine/**/*.js'],
+				dest:'build/ng-grails-test.js'
+			}
+			
 		},
 		clean: {
 			  build: ["build",'web-app/js/ng-grails.js','web-app/js/templates.js']
@@ -71,6 +76,11 @@ module.exports = function(grunt) {
         	  files: [
                   {src: ['build/ng-grails.js'], dest: 'web-app/js/ng-grails.js'},
               ],
+          },
+          jasmine: {
+        	  files: [
+        	          {src: ['build/ng-grails-test.js'], dest: 'web-app/js/ng-grails-test.js'}
+        	          ]
           }
         },
         cucumberjs: {
@@ -81,7 +91,8 @@ module.exports = function(grunt) {
         }
 	});
 	grunt.registerTask('default', [ 'build' ]);
-	grunt.registerTask('build', [ 'clean', 'html2js', 'concat', 'copy:build']);
-	grunt.registerTask('release', [ 'clean', 'html2js', 'concat', 'ngAnnotate', 'uglify', 'copy:release' ]);
+	grunt.registerTask('build', [ 'clean', 'html2js', 'concat:core', 'concat:combine', 'copy:build']);
+	grunt.registerTask('release', [ 'clean', 'html2js', 'concat:core', 'concat:combine', 'ngAnnotate', 'uglify', 'copy:release' ]);
+	grunt.registerTask('test', ['build','concat:jasmine', 'copy:jasmine']);
 	return grunt;
 }

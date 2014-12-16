@@ -7,7 +7,6 @@ import groovy.json.JsonSlurper;
 class QuestionController {
 	def questionService
 	def index(){
-		render(view:"app")
 	}
 	def get() {
 		render questionService.get(params.id) as JSON

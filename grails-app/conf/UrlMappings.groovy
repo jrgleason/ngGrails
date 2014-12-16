@@ -7,7 +7,6 @@ class UrlMappings {
 //			   // apply constraints here
 //		   }
 //	    }
-
 		"/Note/$id?"(controller: "question", parseRequest: true) {
 			action = [GET: "get", POST: "create", PUT: "update", DELETE: "delete"]
 		}

@@ -1,0 +1,6 @@
+.row
+  .span8.offset1
+    h1 Messages
+      input(type="text", ng-model="text")
+      button(ng-click="send()") Send
+      p(ng-repeat="message in messages") {{message}}
