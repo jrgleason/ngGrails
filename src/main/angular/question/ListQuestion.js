@@ -6,8 +6,10 @@ function ListDirective($templateCache) {
   return {
 	  restrict: "E",
 	  templateUrl: 'main/partials/question/listQuestion.jade',
-	  controller:  'questionController'
+	  controller:  'questionController',
+	  //Example of how you could use controller as per https://github.com/angular/angular.js/issues/7635
+	  //I left this out because it would add 3 lines and remove 1 ;-)
+//	  controllerAs: 'questionCtrl'
   }
 };
-angular.module('jg.ngGrails')
-       .directive('jgNoteList', ListDirective);
+app.directive('jgNoteList', ListDirective);

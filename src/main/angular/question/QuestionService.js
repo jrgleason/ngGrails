@@ -6,10 +6,11 @@ function QuestionService($interval, Restangular) {
 	function questionsReceived(questions) {
 		errorCount = 0;
 		if (_this.questions.length != questions.length) {
+			// Updating the lists seemed to help with performance.
 			while(_this.questions.length > 0) {
 				_this.questions.pop();
 			}
-			var q = angular.forEach(questions, function(value) {
+			angular.forEach(questions, function(value) {
 				_this.questions.push(value)
 			});
 			
@@ -31,11 +32,11 @@ function QuestionService($interval, Restangular) {
 	this.getQuestion = function(id) {
 		return this.questions[id];
 	}
+	//TODO: Very inefficient some of these issues will be addressed in 2.0
 	var clock = $interval(function() {
 		if (running) {
 			_this.getQuestions();
 		}
-
 	}, 100);
 }
-angular.module('jg.ngGrails').service('questionService', QuestionService);
+app.service('questionService', QuestionService);

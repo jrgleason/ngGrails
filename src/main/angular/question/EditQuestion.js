@@ -9,5 +9,5 @@ function EditQuestion(){
 		controller: QuestionController,
 	}
 }
-angular.module('jg.ngGrails')
+app
   .directive('jgEditQuestion', EditQuestion);

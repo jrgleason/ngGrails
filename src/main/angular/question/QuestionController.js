@@ -1,4 +1,5 @@
 function QuestionController($scope, $location, questionService) {
+	//SEE ListController
 	$scope.questionCtrl = this;
 	var _this = this,
 	    question = questionService.question
@@ -20,13 +21,16 @@ function QuestionController($scope, $location, questionService) {
 	this.add = function() {
 		questionService.add(this.newQuestion)
                  .then(function(data){
-			if(data.errorMessages == null || data.errorMessages.length == 0){
+			if(!data.errorMessages || _this.errorMessages.length == 0){
 				$location.path('');
 			}
 			else{
+				//TODO: Go back and look at Angular error handling
+				//Clear the list
 				while(_this.errorMessages.length > 0) {
 					_this.errorMessages.pop();
 				}
+				//Add new items back on
 				angular.forEach(data.errorMessages, function(value) {
 					_this.errorMessages.push(value)
 				})
@@ -34,24 +38,20 @@ function QuestionController($scope, $location, questionService) {
 		})
 	}
 	this.voteUp = function(index) {
-		var questionToUpdate = _this.questions[index];
-		questionToUpdate.voteCount++;
-		questionToUpdate.put();
+		_this.questions[index].voteCount++;
+		_this.questions[index].put();
 	}
 	this.voteDown = function(index) {
-		var questionToUpdate = _this.questions[index];
-		questionToUpdate.voteCount--;
-		questionToUpdate.put();
+		_this.questions[index].voteCount--;
+		_this.questions[index].put();
 	}
 	this.delete = function(index) {
-		var questionToUpdate = _this.questions[index];
-		questionToUpdate.remove();
+		_this.questions[index].remove();
 	}
 	this.edit = function(index){
-		var questionToUpdate = questionService.questions[index];
-		questionToUpdate.put();
+		questionService.questions[index].put();
+		//TODO Could probably be toggleable
 		$location.path('');
 	}
 }
-angular.module('jg.ngGrails').controller('questionController',
-		QuestionController);
+app.controller('questionController', QuestionController);
