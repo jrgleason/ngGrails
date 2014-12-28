@@ -19,9 +19,9 @@ function QuestionController($scope, $location, questionService) {
     }
 	
 	this.add = function() {
-		questionService.add(this.newQuestion)
+		questionService.add(_this.newQuestion)
                  .then(function(data){
-			if(!data.errorMessages || _this.errorMessages.length == 0){
+			if(!data.errorMessages || data.errorMessages.length == 0){
 				$location.path('');
 			}
 			else{

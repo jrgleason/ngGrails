@@ -2,9 +2,7 @@ function EditQuestion(){
 	return{
 		restrict: "E",
 		replace: false,
-		scope: {
-		  ordinal:"=", 
-		},
+		scope: {},
 		templateUrl: "main/partials/question/editQuestion.jade",
 		controller: QuestionController,
 	}
