@@ -7,5 +7,5 @@ function AddQuestion(){
 		controller: QuestionController,
 	}
 }
-angular.module('jg.ngGrails')
+app
   .directive('jgAddQuestion', AddQuestion);
