@@ -1,4 +1,5 @@
 node_modules
+ng-grails*.js
 target
 target-eclipse
 .settings
