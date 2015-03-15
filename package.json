@@ -13,7 +13,8 @@
     "grunt-contrib-watch": "*",
     "grunt-cucumber": "^0.2.3",
     "grunt-html2js": "*",
-    "grunt-ng-annotate": "*",
+    "grunt-ng-annotate":"*",
+    "grunt-contrib-less":"*",
     "html2js": "*",
     "chance":"*",
     "zombie": "*"

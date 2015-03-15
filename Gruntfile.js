@@ -7,35 +7,43 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-cucumber');
+        grunt.loadNpmTasks('grunt-contrib-less');
 	grunt.initConfig({
 		pkg : grunt.file.readJSON('package.json'),
 		html2js : {
 			build : {
-				src : [ 'src/main/partials/**/*.html', 
-				        'src/main/partials/**/*.jade' ],
+				src : [ 'src/main/angular/components/**/*.html', 
+				        'src/main/angular/components/**/*.jade' ],
 				dest : 'build/ng-grails-templates.js'
 			}
 		},
+                less : {
+                        core : {
+                            files: [{
+                                src : ['src/main/angular/components/**/*.less'],
+                                dest : 'build/test.css' 
+                            }]
+                        }
+                },
 		concat : {
-			core : {
+		        core : {
 				src : [ 'src/main/angular/**/app.js',
 						'src/main/angular/**/*.js'],
 				dest : 'build/ng-grails-core.js',
 			},
-		    combine: {
-		    	src:['build/ng-grails-templates.js',
+		        combine: {
+		    	  src:['build/ng-grails-templates.js',
 		    	     'build/ng-grails-core.js'],
-		    	dest : 'build/ng-grails.js',     
-		    },
+		    	  dest : 'build/ng-grails.js',     
+		        },
 			jasmine: {
 				src:['src/test/jasmine/**/*.js'],
 				dest:'build/ng-grails-test.js'
 			}
-			
-		},
+	        },
 		clean: {
-			  build: ["build",'web-app/js/ng-grails.js','web-app/js/templates.js']
-	    },
+                        build: ["build",'web-app/js/ng-grails.js','web-app/js/templates.js']
+	        },
 		watch : {
 			html2js : {
 				files : [ 'src/main/partials/**/*.html', 
