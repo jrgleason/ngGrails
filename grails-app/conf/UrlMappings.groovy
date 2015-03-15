@@ -1,12 +1,5 @@
 class UrlMappings {
-
 	static mappings = {
-	   // TODO Remove
-//		"/$controller/$action?/$id?(.$format)?" {
-//		   constraints { 
-//			   // apply constraints here
-//		   }
-//	    }
 		"/Note/$id?"(controller: "question", parseRequest: true) {
 			action = [GET: "get", POST: "create", PUT: "update", DELETE: "delete"]
 		}

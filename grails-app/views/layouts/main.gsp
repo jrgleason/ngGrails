@@ -16,11 +16,26 @@
 		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 		<g:layoutHead/>
 		<asset:stylesheet src="application.css"/>
-		<asset:javascript src="jquery" />
-		<asset:javascript src="spring-websocket" />
 	</head>
 	<body  ng-app="jg.ngGrails">
 		<g:layoutBody/>
+                <asset:javascript src="jquery" />
+                <asset:javascript src="spring-websocket" />
+                <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+                <script type='application/javascript' src='${request.contextPath}/js/fastclick.js'></script>
+                <script src="js/quickstart/dist/es6-shim.js"></script>
 		<asset:javascript src="application.js"/>
+                <script>
+                 System.paths = {
+                    'angular2/*':'./js/quickstart/angular2/*.js', // Angular
+                 };
+                 window.appContext = '${request.contextPath}';
+                 if ('addEventListener' in document) {
+                   document.addEventListener('DOMContentLoaded', function() {
+                     FastClick.attach(document.body);
+                   }, false);
+                 }
+               </script>
+               <script src="js/ng-grails.js"></script>
 	</body>
 </html>

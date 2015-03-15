@@ -20,8 +20,6 @@ describe("Testing the question", function() {
 		spyOn(item, 'put');
 		spyOn(item, 'remove');
 		var defer = $q.defer();
-//		defer.resolve({errorMessages:[{}]})
-		
 		spyOn(questionService, 'add').and.returnValue(defer.promise);
 		defer.resolve();
 		questionService.questions = [item,item];
@@ -52,11 +50,4 @@ describe("Testing the question", function() {
 		expect(item.put).toHaveBeenCalled();
 		expect($location.path).toHaveBeenCalledWith('');
 	})
-	//FIXME: Finish this test.
-//	it("Make sure the add is working as expected", function(){
-//		expect(controller.errorMessages.length).toBe(0);
-//		controller.newQuestion = {};
-//		controller.add();
-//		expect(controller.errorMessages.length).toBe(1);
-//	})
 });
