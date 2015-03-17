@@ -1,5 +1,11 @@
 **This branch is in development but will include angular2**
 
+for this version 'grunt copy:release' is the main method for copying js components back to the project's web-app folder.
+
+I am still working on organization
+
+**Old Readme**
+
 This is a project exploring some of the best practices for using Grails and Angular together. It explores the balance between GSP side and Angular side rendering and how both can be used in harmony.
 
 Here is a quick and dirty to get up and running (I will format later).
