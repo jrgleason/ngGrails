@@ -24,18 +24,6 @@
                 <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
                 <script type='application/javascript' src='${request.contextPath}/js/fastclick.js'></script>
                 <script src="js/quickstart/dist/es6-shim.js"></script>
-		<asset:javascript src="application.js"/>
-                <script>
-                 System.paths = {
-                    'angular2/*':'./js/quickstart/angular2/*.js', // Angular
-                 };
-                 window.appContext = '${request.contextPath}';
-                 if ('addEventListener' in document) {
-                   document.addEventListener('DOMContentLoaded', function() {
-                     FastClick.attach(document.body);
-                   }, false);
-                 }
-               </script>
-               <script src="js/ng-grails.js"></script>
+                <script src="js/components/question/question.js"> </script>
 	</body>
 </html>

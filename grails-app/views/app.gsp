@@ -5,5 +5,6 @@
 		<title>Grails/Angular Demo App</title>
 	</head>
 	<body>
+          <question-app></question-app>
 	</body>
 </html>

@@ -77,7 +77,7 @@ module.exports = function(grunt) {
         copy: {
           release: {
               files: [
-                  {src: ['build/ng-grails-min.js'], dest: 'web-app/js/ng-grails.js'},
+                  {expand: true, cwd: 'src/main/angular/components/', src: ['**/*.js'], dest: 'web-app/js/components/'},
               ],
           },
           build: {
